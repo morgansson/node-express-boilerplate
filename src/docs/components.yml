@@ -18,7 +18,40 @@ components:
         email: fake@example.com
         name: fake name
         role: user
-
+    Collection:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        account:
+          type: string
+        artworks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+      example:
+        name: Degenerate Ape Academy
+        description: Apes on the blockchain
+        account: ETAtLmCmsoiEEKfNrHKJ2kYy3MoABhU6NQvpSfij5tDs
+    Artwork:
+      type: object
+      properties:
+        name:
+          type: string
+        mint:
+          type: string
+        account:
+          type: string
+        parent:
+          type: string
+      example:
+        id: 6126a4d820efab3e58046520
+        name: "Degen Ape #1"
+        mint: BZDCUZd1bPnmTWX35z9sPPefu9T8Vvt8rdD13SCo4B65
+        account: ETAtLmCmsoiEEKfNrHKJ2kYy3MoABhU6NQvpSfij5tDs
+        parent: 6122d3c889b42d3320075167
     Token:
       type: object
       properties:
@@ -30,7 +63,6 @@ components:
       example:
         token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWJhYzUzNDk1NGI1NDEzOTgwNmMxMTIiLCJpYXQiOjE1ODkyOTg0ODQsImV4cCI6MTU4OTMwMDI4NH0.m1U63blB0MLej_WfB7yC2FTMnCziif9X8yzwDEfJXAg
         expires: 2020-05-12T16:18:04.793Z
-
     AuthTokens:
       type: object
       properties:
@@ -38,7 +70,6 @@ components:
           $ref: '#/components/schemas/Token'
         refresh:
           $ref: '#/components/schemas/Token'
-
     Error:
       type: object
       properties:
@@ -46,7 +77,6 @@ components:
           type: number
         message:
           type: string
-
   responses:
     DuplicateEmail:
       description: Email already taken
